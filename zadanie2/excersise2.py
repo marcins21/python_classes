@@ -56,7 +56,7 @@ def exc_2_19(l: List[int]) -> List[str]:
     return list_with_strs
 
 
-class TestStringManipulationFunctions:
+class PerformTests:
     def test_exc_2_10(self):
         # ZADANIE 2.10
         # Mamy dany napis wielowierszowy line. Podać sposób obliczenia liczby wyrazów w napisie. Przez wyraz rozumiemy ciąg "czarnych" znaków, oddzielony od innych wyrazów białymi znakami (spacja, tabulacja, newline).
@@ -130,7 +130,7 @@ class TestStringManipulationFunctions:
 # Testy - nie uzyzwalem zadnej biblioteki do wykonywania testow jak np. unitest, pytest uzyłem zwykłego 'assert'
 # Jezeli program wykonuje sie bez zadnych Error'ów to oznacza ze testy przeszly prawidłowo
 if __name__ == "__main__":
-    test_class = TestStringManipulationFunctions()
+    test_class = PerformTests()
     test_class.test_exc_2_10()
     test_class.test_exc_2_11()
     test_class.test_exc_2_12()
