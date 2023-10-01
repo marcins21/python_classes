@@ -81,10 +81,100 @@ def exc_3_4():
             print(f"\nNie podales liczby rzeczywistej tylko '{user_input}'")
 
 
+def exc_3_5(lenght:int) -> str:
+    result = ""
+
+    #konstruowanie struktury miarki
+    unit = "|...."
+    for i in range(lenght):
+        result += unit
+    result+="|"
+
+    spaces={}
+    off_set = 4
+
+    # Jezeli dlugosc liczby na miarce sie zwieksza, trzeba zadbac o to by odleglosci pomiedzy kolejnymi liczbami byly mniejsze
+    # PRZYKLAD -  0    1    2 ...  (4 spacje odstępu)   10   11   12 ...  (3 spacje)  100  101  102 ... (2 spacje)
+    # Wtedy liczba zawsze bedzie znajdowac sie po znakiem "|"
+
+    # oczywiscie to wszystko przy zalozeniu ze linijka posiada 4 znaki '.' oraz dwa znaki '|' w kazdym segmencie przy innych zalozeniach trzeba dostosowac zmienna offset
+
+    for i in range(lenght+1):
+        if len(str(i)) > len(str(i - 1)):
+            off_set -= 1
+        spaces[i] = off_set
+
+    numbers = ""
+    for k,v in spaces.items():
+        numbers+=f"{k}"+(" "*v)
+
+    result += "\n"+numbers
 
 
+    #print(spaces)
+    return result
 
 
+def exc_3_6(height: int, width: int) -> str:
+    line ="+----"
+    pipes="|    "
+
+    horizontal_line=line*width
+    horizontal_line+="+"
+    horizontal_pipes=pipes*width
+    horizontal_pipes+="|"
+
+    result = horizontal_line + "\n"
+    units=0
+    while units != height:
+        result+=horizontal_pipes+"\n"
+        result += horizontal_line + "\n"
+        units+=1
+    return result
+#exc_3_6(3,4)
 
 
-exc_3_4()
+def exc_3_8(list_a, list_b):
+    list_a = set(list_a)
+    list_b = set(list_b)
+    a = list_a.intersection(list_b)
+    b = list_a.union(list_b)
+
+    return list(a), list(b)
+
+#print(exc_3_8([1,2,3,4],[3,4,6,7,7]))
+
+
+def exc_3_9(l):
+    result = []
+    for seq in l:
+        result.append(sum(seq))
+    return result
+
+#print(exc_3_9([[],[4],(1,2),[3,4],(5,6,7)]))
+
+def exc_3_10(input_user: str):
+    roman_values = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000
+    }
+
+    arabic_numeral = 0
+    prev_value = 0
+    for numeral in input_user[::-1]:
+        value = roman_values[numeral]
+        if value < prev_value:
+            arabic_numeral -= value
+        else:
+            arabic_numeral += value
+        prev_value = value
+    return arabic_numeral
+
+#print(exc_3_10("MIV"))
+
+
