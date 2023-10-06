@@ -9,7 +9,7 @@
 # Dzięki temu można w pliku stosować polskie znaki w napisach.
 # Po znaku '#' mamy komentarz do końca linii.
 
-print ( "Hello, world!" )   # działa dla Pythona 2 i 3
+print("Hello, world!")  # działa dla Pythona 2 i 3
 # Ustawienie kodowania UTF-8.
 # -*- coding: utf-8 -*-   # styl edytora Emacs
 # coding: utf-8         # to wystarczy
