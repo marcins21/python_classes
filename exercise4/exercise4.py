@@ -128,34 +128,49 @@ def flatten(seq, sort=False):
     return result
 
 
-def main():
+class PerformTests:
+    def test_factorial(self):
+        assert factorial(5) == 120
+        assert factorial(6) == 720
+
+    def test_fibonacci(self):
+        assert fibonacci(6) == 8
+        assert fibonacci(7) == 13
+
+    def test_odwracanie_iter(self):
+        assert odwracanie_iter([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 0, 4) == [5, 4, 3, 2, 1, 6, 7, 8, 9, 10]
+
+    def test_odwracanie_rek(self):
+        assert odwracanie_rek([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 0, 4) == [5, 4, 3, 2, 1, 6, 7, 8, 9, 10]
+
+    def test_sum_seq(self):
+        assert sum_seq([1, 2, [3, 3, [1, 2, 3]]]) == 15
+
+    def test_flatten(self):
+        seq = [1, (2, 3), [], [4, (5, 6, 7)], 8, [9]]
+        assert flatten(seq) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        assert flatten([1, 2, [3, 3, [1, 2, 3]]], sort=True) == [1, 1, 2, 2, 3, 3, 3]
+        assert flatten([1, 2, [3, 3, [1, 2, 3]]]) == [1, 2, 3, 3, 1, 2, 3]
+
+
+# Jezeli program wykonuje sie bez zadnych błedów, oznacza to ze testy przeszly prawidłowo
+if __name__ == "__main__":
+    Test = PerformTests()
+
     print("\nFunkcje make_ruler i make_grid")
     print(make_ruler(10))
     print(make_ruler(20))
     print(make_grid(2, 4))
 
-    print("\nFunkcja factorial (iteracyjnie)")
-    print(f"Wynik 5!: {factorial(5)}")
-    print(f"Wynik 6!: {factorial(6)}")
-
-    print("\nFunkcja Fibonacci (iteracyjnie)")
-    print(f"6 wyraz ciagu fibonacciiego : {fibonacci(6)}")
-    print(f"7 wyraz ciagu fibonacciiego : {fibonacci(7)}")
-
-    print("\nFunkcja odwracanie_iter (iteracyjnie)")
-    print(odwracanie_iter([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 0, 4))
-    print("\nFunkcja odwracanie_rek (rekurencyjnie)")
-    print(odwracanie_rek([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 0, 4))
-
-    print("\nFuncja sum_seq")
-    print(sum_seq([1, 2, [3, 3, [1, 2, 3]]]))
-
-    print("\n----Funkcja flatten (dodalem parametr sort)")
-    seq = [1, (2, 3), [], [4, (5, 6, 7)], 8, [9]]
-    print(flatten(seq))
-    print(flatten([1, 2, [3, 3, [1, 2, 3]]], sort=True))
-    print(flatten([1, 2, [3, 3, [1, 2, 3]]]))
-
-
-if __name__ == "__main__":
-    main()
+    print("Funkcja factorial (iteracyjnie)")
+    Test.test_factorial()
+    print("Funkcja Fibonacci (iteracyjnie)")
+    Test.test_fibonacci()
+    print("Funkcja odwracanie_iter (iteracyjnie)")
+    Test.test_odwracanie_iter()
+    print("Funkcja odwracanie_rek (rekurencyjnie)")
+    Test.test_odwracanie_rek()
+    print("Funcja sum_seq")
+    Test.test_sum_seq()
+    print("Funkcja flatten (dodalem parametr sort)")
+    Test.test_flatten()
