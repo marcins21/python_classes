@@ -72,8 +72,7 @@ def fibonacci(n: int) -> int:
     try:
         result = 1
         a = 1
-        b = 1
-        c = 1
+        b=1
         while n != 2:
             c = a + b
             a = b
