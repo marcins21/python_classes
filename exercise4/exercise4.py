@@ -69,10 +69,13 @@ def factorial(n: int) -> int:
 
 
 def fibonacci(n: int) -> int:
+    result = 1
+    a = 1
+    b = 1
+    c = 1
+    if n < 3:
+        return c
     try:
-        result = 1
-        a = 1
-        b=1
         while n != 2:
             c = a + b
             a = b
