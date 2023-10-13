@@ -1,11 +1,13 @@
 from typing import List
 
 
+# Jezeli dlugosc liczby na miarce sie zwieksza, trzeba zadbac o to by odleglosci pomiedzy kolejnymi liczbami byly mniejsze
+# PRZYKLAD -  0    1    2 ...  (4 spacje odstępu)   10   11   12 ...  (3 spacje)  100  101  102 ... (2 spacje)
+# Wtedy liczba zawsze bedzie znajdowac sie po znakiem "|"
+# oczywiscie to wszystko przy zalozeniu ze linijka posiada 4 znaki '.' oraz dwa znaki '|' w kazdym segmencie przy innych zalozeniach trzeba dostosowac zmienna offset
 def make_ruler(n: int) -> str:
     try:
         result = ""
-
-        # konstruowanie struktury miarki
         unit = "|...."
         for i in range(n):
             result += unit
@@ -13,12 +15,6 @@ def make_ruler(n: int) -> str:
 
         spaces = {}
         off_set = 4
-
-        # Jezeli dlugosc liczby na miarce sie zwieksza, trzeba zadbac o to by odleglosci pomiedzy kolejnymi liczbami byly mniejsze
-        # PRZYKLAD -  0    1    2 ...  (4 spacje odstępu)   10   11   12 ...  (3 spacje)  100  101  102 ... (2 spacje)
-        # Wtedy liczba zawsze bedzie znajdowac sie po znakiem "|"
-
-        # oczywiscie to wszystko przy zalozeniu ze linijka posiada 4 znaki '.' oraz dwa znaki '|' w kazdym segmencie przy innych zalozeniach trzeba dostosowac zmienna offset
 
         for i in range(n + 1):
             if len(str(i)) > len(str(i - 1)):

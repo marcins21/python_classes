@@ -1,5 +1,6 @@
 # Author Marcin Sitko
 
+
 def exercise_3_3():
     for i in range(31):
         if i % 3 == 0:
