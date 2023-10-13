@@ -1,0 +1,68 @@
+--------ZADANIE 3_1-----------
+Ten kod jest poprawny składniowo, jedyna poprawa to przypisanie zmiennych x,y w jednej lini x=2;y=3
+          x = 2
+          y = 3
+          if x > y:
+              result = x
+          else:
+              result = y
+
+Ten kod także jest poprawny składowniowo
+          for i in "axby": print(ord(i) if ord(i) < 100 else i)
+
+Poniższy kod nie jest napisany poprawnie składniowo, dlatego że
+funkcje print() powinna byc przed instrukcja warunkowa if dodatkowo nie mamy tutaj instrukcji warunkowej else
+Aby kod działał można go zapisać w ten sposób:
+# for i in "axby":
+#     if ord(i) < 100: print (i)
+#         print (i)
+
+for i in "axby": if ord(i) < 100: print (i)
+
+
+
+-------------ZADANIE 3_2------------
+
+Tutaj mamy tylko dwie zmienne, x i y natomiast chcemy im przypisac az 3 liczby
+KOD
+      x, y = 1, 2, 3
+
+Przypisanie nie tworzy listy tylko tuple tzn : X=(1,2,3)
+tuple jest niemutowalna (immutable) to znaczy ze nie możemy zmieniać jej zawartości dlatego poniższa akcja nie może zostac wykonana
+KOD
+    X = 1, 2, 3
+    X[1] = 4
+
+Poniższy kod jest poprawny
+X=[1,2,3] , X[3] = 4
+
+
+Poniższy kod nie jest poprawny, ponieważ łańcuchy znaków (string) są niemutowalne (immutable), więc nie można bezpośrednio
+zmieniać ich zawartości. Możemy użyć metody .split() do podzielenia łańcucha na listę, a następnie użyć join lub operatora += do łączenia.
+
+X = "abc"
+X.append("d")
+
+Poprawniony kod
+          X=[1,2,3]
+          X[3] = 4
+          X="abc"
+          X+='d'
+
+Poniższy kod również jest błędny. Tutaj błędem jest przypisanie L = L.sort(). Ze względu na to, że .sort() zwraca typ None,
+przypisanie tego do L oznacza, że nasza lista zostaje posortowana, ale tracimy jej oryginalny typ. Zamiast tego powinniśmy użyć L.sort(),
+co spowoduje, że nasza lista zostanie zmodyfikowana, a jej typ zostanie zachowany.
+Dodatkowo należy zmienić konstrukcję samej metody map() z L = list(map(pow, range(8))) na L = list(map(pow, L, range(8))),
+ponieważ nie podajemy na jakiej liście ma to być wykonane, tylko przypisujemy wynik do naszej listy. Ponadto, funkcja range(int)
+zaczyna liczenie od 0, więc pierwszy element naszej listy będzie równy 1
+
+KOD
+          L = [3, 5, 4]
+          L = L.sort()
+          L = list(map(pow, range(8)))
+Poprawiony KOD
+           L=[3,5,4]
+          L.sort()
+          L = list(map(pow,L,range(1,8)))
+          lub mozemy uzyc range(8) jezeli faktycznie chcemy zaczynac potegowanie od 0
+
