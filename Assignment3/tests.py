@@ -1,6 +1,4 @@
 import unittest
-
-# Import the functions you want to test
 from exercise3 import *
 
 
