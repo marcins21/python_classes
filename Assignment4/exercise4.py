@@ -123,7 +123,7 @@ def flatten(seq, sort=False):
         return sorted(result)
     return result
 
-
+#TODO: unittest module
 class PerformTests:
     def test_factorial(self):
         assert factorial(5) == 120
@@ -134,32 +134,11 @@ class PerformTests:
         assert fibonacci(7) == 13
 
     def test_odwracanie_iter(self):
-        assert odwracanie_iter([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 0, 4) == [
-            5,
-            4,
-            3,
-            2,
-            1,
-            6,
-            7,
-            8,
-            9,
-            10,
-        ]
+        assert odwracanie_iter([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 0, 4) == [5, 4, 3, 2, 1, 6, 7, 8, 9, 10]
 
     def test_odwracanie_rek(self):
-        assert odwracanie_rek([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 0, 4) == [
-            5,
-            4,
-            3,
-            2,
-            1,
-            6,
-            7,
-            8,
-            9,
-            10,
-        ]
+        assert odwracanie_rek([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 0, 4) == [5, 4, 3, 2, 1, 6, 7, 8, 9, 10]
+
 
     def test_sum_seq(self):
         assert sum_seq([1, 2, [3, 3, [1, 2, 3]]]) == 15
