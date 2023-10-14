@@ -82,7 +82,7 @@ def fibonacci(n: int) -> int:
     except Exception as e:
         raise ValueError(f"Error in fibonacci: {str(e)}")
 
-
+#TODO:
 def odwracanie_iter(L: List, left: int, right: int) -> List:
     try:
         for i in range(left, (right + 1) // 2):
@@ -123,51 +123,3 @@ def flatten(seq, sort=False):
         return sorted(result)
     return result
 
-#TODO: unittest module
-class PerformTests:
-    def test_factorial(self):
-        assert factorial(5) == 120
-        assert factorial(6) == 720
-
-    def test_fibonacci(self):
-        assert fibonacci(6) == 8
-        assert fibonacci(7) == 13
-
-    def test_odwracanie_iter(self):
-        assert odwracanie_iter([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 0, 4) == [5, 4, 3, 2, 1, 6, 7, 8, 9, 10]
-
-    def test_odwracanie_rek(self):
-        assert odwracanie_rek([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 0, 4) == [5, 4, 3, 2, 1, 6, 7, 8, 9, 10]
-
-
-    def test_sum_seq(self):
-        assert sum_seq([1, 2, [3, 3, [1, 2, 3]]]) == 15
-
-    def test_flatten(self):
-        seq = [1, (2, 3), [], [4, (5, 6, 7)], 8, [9]]
-        assert flatten(seq) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
-        assert flatten([1, 2, [3, 3, [1, 2, 3]]], sort=True) == [1, 1, 2, 2, 3, 3, 3]
-        assert flatten([1, 2, [3, 3, [1, 2, 3]]]) == [1, 2, 3, 3, 1, 2, 3]
-
-
-# Jezeli program wykonuje sie bez zadnych błedów, oznacza to ze testy przeszly prawidłowo
-if __name__ == "__main__":
-    Test = PerformTests()
-
-    print("\nFunkcje make_ruler i make_grid")
-    print(make_ruler(10))
-    print(make_ruler(20))
-    print(make_grid(2, 4))
-
-    print("Funkcja factorial (iteracyjnie)")
-    Test.test_factorial()
-    print("Funkcja Fibonacci (iteracyjnie)")
-    Test.test_fibonacci()
-    print("Funkcja odwracanie_iter (iteracyjnie)")
-    Test.test_odwracanie_iter()
-    print("Funkcja odwracanie_rek (rekurencyjnie)")
-    Test.test_odwracanie_rek()
-    print("Funcja sum_seq")
-    Test.test_sum_seq()
-    print("Funkcja flatten (dodalem parametr sort)")
-    Test.test_flatten()

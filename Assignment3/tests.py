@@ -2,7 +2,7 @@ import unittest
 from exercise3 import *
 
 
-class Test_exercises(unittest.TestCase):
+class TestExercises(unittest.TestCase):
     def test_modulo_3_3(self):
         print("\nPrinting 0-30 number without numbers divisible by 3")
         exercise_3_3()
