@@ -8,6 +8,8 @@ class TestExercises(unittest.TestCase):
 
     def test_exercise_2_11(self):
         self.assertEqual(exercise_2_11("Hello"), "H_e_l_l_o")
+        self.assertEqual(exercise_2_11(""), "")
+        self.assertEqual(exercise_2_11("B"), "B")
 
     def test_exercise_2_12(self):
         self.assertEqual(exercise_2_12("This is a test"), ("Tiat", "ssat"))
