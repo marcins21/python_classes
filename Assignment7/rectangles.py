@@ -1,4 +1,4 @@
-from Assignment6.points import Point
+from points import Point
 
 
 class Rectangle:
@@ -43,19 +43,31 @@ class Rectangle:
         y = self.y2 - self.y1
         return x * y
 
-    # TODO:
     def move(self, x, y):
-        pass  # przesunięcie o (x, y)
+        moving = Point(x, y)
+        self.point_1 = self.point_1 + moving
+        self.point_2 = self.point_2 + moving
+        return f"[{self.point_1}, {self.point_2}]"
 
-    def intersection(self, other):
-        pass  # część wspólna prostokątów
 
-    def cover(self, other):
-        pass  # prostąkąt nakrywający oba
+    def intersection(self, other: "Rectangle"):
+        if (self.point_1.y > other.point_1.y or self.point_2.y < other.point_2.y or self.point_1.x > other.point_1.x or self.point_2.x < other.point_2.x):
+            raise ValueError(f"No Intersection Area with {other}")
+        new_x_1 = max(self.point_1.x, other.point_1.x)
+        new_y_1 = max(self.point_1.y, other.point_1.y)
+        new_x_2 = min(self.point_2.x, other.point_2.x)
+        new_y_2 = min(self.point_2.y, other.point_2.y)
+        return Rectangle(new_x_1,new_y_1,new_x_2,new_y_2)
 
-    def make4(self):
-        pass  # zwraca krotkę czterech mniejszych
+    def cover(self, other: "Rectangle"):
+        new_x_1 = min(self.point_1.x, other.point_1.x)
+        new_y_1 = min(self.point_1.y, other.point_1.y)
+        new_x_2 = max(self.point_2.x, other.point_2.x)
+        new_y_2 = max(self.point_2.y, other.point_2.y)
+        return Rectangle(new_x_1,new_y_1,new_x_2,new_y_2)
 
+    # TODO:
+    # make4
 
 rec1 = Rectangle(1, 0, 3, 3)
 rec2 = Rectangle(1, 3, 2, 3)
