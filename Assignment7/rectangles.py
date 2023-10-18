@@ -49,25 +49,30 @@ class Rectangle:
         self.point_2 = self.point_2 + moving
         return f"[{self.point_1}, {self.point_2}]"
 
-
     def intersection(self, other: "Rectangle"):
-        if (self.point_1.y > other.point_1.y or self.point_2.y < other.point_2.y or self.point_1.x > other.point_1.x or self.point_2.x < other.point_2.x):
+        if (
+            self.point_1.y > other.point_1.y
+            or self.point_2.y < other.point_2.y
+            or self.point_1.x > other.point_1.x
+            or self.point_2.x < other.point_2.x
+        ):
             raise ValueError(f"No Intersection Area with {other}")
         new_x_1 = max(self.point_1.x, other.point_1.x)
         new_y_1 = max(self.point_1.y, other.point_1.y)
         new_x_2 = min(self.point_2.x, other.point_2.x)
         new_y_2 = min(self.point_2.y, other.point_2.y)
-        return Rectangle(new_x_1,new_y_1,new_x_2,new_y_2)
+        return Rectangle(new_x_1, new_y_1, new_x_2, new_y_2)
 
     def cover(self, other: "Rectangle"):
         new_x_1 = min(self.point_1.x, other.point_1.x)
         new_y_1 = min(self.point_1.y, other.point_1.y)
         new_x_2 = max(self.point_2.x, other.point_2.x)
         new_y_2 = max(self.point_2.y, other.point_2.y)
-        return Rectangle(new_x_1,new_y_1,new_x_2,new_y_2)
+        return Rectangle(new_x_1, new_y_1, new_x_2, new_y_2)
 
     # TODO:
     # make4
+
 
 rec1 = Rectangle(1, 0, 3, 3)
 rec2 = Rectangle(1, 3, 2, 3)

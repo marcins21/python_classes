@@ -33,12 +33,19 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(Rectangle(-4, -1, 892, 100).move(4, 9), "[(0, 8), (896, 109)]")
 
     def test_intersection(self):
-        self.assertEqual(Rectangle(0, 0, 7, 7).intersection(Rectangle(3, 3, 3, 3)), Rectangle(3, 3, 3, 3))
+        self.assertEqual(
+            Rectangle(0, 0, 7, 7).intersection(Rectangle(3, 3, 3, 3)),
+            Rectangle(3, 3, 3, 3),
+        )
 
     def test_cover(self):
-        self.assertEqual(Rectangle(2, 2, 5, 5).cover(Rectangle(4, 4, 6, 6)), Rectangle(2, 2, 6, 6))
-        self.assertEqual(Rectangle(2, 2, 4, 4).cover(Rectangle(4, 4, 6, 6)), Rectangle(2, 2, 6, 6))
+        self.assertEqual(
+            Rectangle(2, 2, 5, 5).cover(Rectangle(4, 4, 6, 6)), Rectangle(2, 2, 6, 6)
+        )
+        self.assertEqual(
+            Rectangle(2, 2, 4, 4).cover(Rectangle(4, 4, 6, 6)), Rectangle(2, 2, 6, 6)
+        )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

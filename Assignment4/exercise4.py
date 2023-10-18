@@ -82,7 +82,8 @@ def fibonacci(n: int) -> int:
     except Exception as e:
         raise ValueError(f"Error in fibonacci: {str(e)}")
 
-#TODO:
+
+# TODO:
 def odwracanie_iter(L: List, left: int, right: int) -> List:
     try:
         for i in range(left, (right + 1) // 2):
@@ -122,4 +123,3 @@ def flatten(seq, sort=False):
     if sort:
         return sorted(result)
     return result
-
