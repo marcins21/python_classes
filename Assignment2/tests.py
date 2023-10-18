@@ -28,7 +28,6 @@ class TestExercises(unittest.TestCase):
             exercise_2_16("GvR is the creator of Python"),
             "Guido van Rossum is the creator of Python",
         )
-
     def test_exercise_2_17(self):
         self.assertEqual(
             exercise_2_17("Python is great and easy"),
