@@ -45,9 +45,8 @@ def exercise_2_16(line: str) -> str:
     if "GvR" in line:
         line = line.replace(str_to_find, str_to_change)
         return line
-    else:
-        error = f"{str_to_find} Doesn't exists in text '{line}'"
-        return error
+    error = f"{str_to_find} Doesn't exists in text '{line}'"
+    return error
 
 
 def exercise_2_17(line: str) -> tuple:
