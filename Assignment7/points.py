@@ -30,7 +30,6 @@ class Point:
     def length(self):
         return math.sqrt(pow(self.x, 2) + pow(self.y, 2))
 
-    # Vector has structure [x,y]
     def __cross__(self, other: "Point") -> int:
         return self.x * other.y - self.y * other.x
 

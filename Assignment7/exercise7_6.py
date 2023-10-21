@@ -38,7 +38,7 @@ class IterateRandomDayNumbers:
 
     def __next__(self):
         current_number = self.day_numbers[self.index]
-        # Adding cycle
+        # Cykl
         self.index = (self.index + 1) % len(self.day_numbers)
         return current_number
 
