@@ -12,7 +12,6 @@ def make_ruler(n: int) -> str:
         for i in range(n):
             result += unit
         result += "|"
-
         spaces = {}
         off_set = 4
 
@@ -24,7 +23,6 @@ def make_ruler(n: int) -> str:
         numbers = ""
         for k, v in spaces.items():
             numbers += f"{k}" + (" " * v)
-
         result += "\n" + numbers
 
         return result

@@ -31,7 +31,6 @@ def exercise_3_5(length: int) -> str:
     for i in range(length):
         result += unit
     result += "|"
-
     spaces = {}
     offset = 4
 
@@ -43,7 +42,6 @@ def exercise_3_5(length: int) -> str:
     numbers = ""
     for k, v in spaces.items():
         numbers += f"{k}" + (" " * v)
-
     result += "\n" + numbers
 
     return result

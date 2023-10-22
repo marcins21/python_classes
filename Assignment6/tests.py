@@ -11,12 +11,12 @@ class TestPoint(unittest.TestCase):
         self.point_d = Point(3, 19)
 
     def test_str(self):
-        self.assertTrue(self.point_a.__str__() == "(1, 1)")
-        self.assertTrue(self.point_b.__str__() == "(3, 3)")
+        self.assertTrue(str(self.point_a) == "(1, 1)")
+        self.assertTrue(str(self.point_b) == "(3, 3)")
 
     def test_repr(self):
-        self.assertTrue(self.point_a.__repr__() == "Point(1, 1)")
-        self.assertTrue(self.point_b.__repr__() == "Point(3, 3)")
+        self.assertTrue(repr(self.point_a) == "Point(1, 1)")
+        self.assertTrue(repr(self.point_b) == "Point(3, 3)")
 
     def test_eq(self):
         self.assertFalse(self.point_a == self.point_b)
@@ -39,9 +39,9 @@ class TestPoint(unittest.TestCase):
         self.assertEquals((self.point_a * self.point_c), 2)
 
     def test_length(self):
-        self.assertEquals(self.point_a.length(), sqrt(2))
-        self.assertEquals(self.point_b.length(), sqrt(18))
-        self.assertEquals(self.point_c.length(), sqrt(2))
+        self.assertEqual(self.point_a.length(), sqrt(2))
+        self.assertEqual(self.point_b.length(), sqrt(18))
+        self.assertEqual(self.point_c.length(), sqrt(2))
 
     def test_cross(self):
         self.assertEquals((self.point_a.__cross__(self.point_b)), 0)
