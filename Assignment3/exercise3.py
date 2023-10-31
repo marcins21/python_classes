@@ -11,7 +11,7 @@ def exercise_3_3():
 def exercise_3_4():
     print("\nCALCULATING THE CUBE OF A REAL NUMBER\n")
     while True:
-        user_input = input("Enter a number: ")
+        user_input = input("Enter a number or 'stop': ")
         if user_input == "stop":
             break
         if user_input.isnumeric():

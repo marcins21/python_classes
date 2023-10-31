@@ -20,9 +20,9 @@ class TestExercises(unittest.TestCase):
 
     def test_grid(self):
         print("\nPrinting Grid Examples")
-        print(exercise_3_6(2, 4))
-        print(exercise_3_6(2, 5))
-        print(exercise_3_6(3, 2))
+        print(f"2x4\n{exercise_3_6(2, 4)}")
+        print(f"3x6\n{exercise_3_6(3, 6)}")
+        print(f"1x5\n{exercise_3_6(1, 5)}")
 
     def test_sum_of_lists(self):
         self.assertEqual(
