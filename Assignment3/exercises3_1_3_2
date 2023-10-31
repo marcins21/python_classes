@@ -34,7 +34,7 @@ tuple jest niemutowalna (immutable) to znaczy ze nie możemy zmieniać jej zawar
     X[1] = 4
 
 Aby poprawic powyzszy kod należało by stworzyć listę wtedy kod będzie poprawny, na przykład w taki sposób:
-X=[1,2,3] , X[3] = 4
+X=[1,2,3] , X[1] = 4
 
 
 Poniższy kod nie jest poprawny, ponieważ łańcuchy znaków (string) są niemutowalne (immutable), więc nie można bezpośrednio
