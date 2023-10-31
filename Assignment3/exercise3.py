@@ -21,29 +21,15 @@ def exercise_3_4():
             print(f"\nYou didn't enter a real number; you entered '{user_input}'")
 
 
-# Jezeli dlugosc liczby na miarce sie zwieksza, trzeba zadbac o to by odleglosci pomiedzy kolejnymi liczbami byly mniejsze
-# PRZYKLAD -  0    1    2 ...  (4 spacje odstępu)   10   11   12 ...  (3 spacje)  100  101  102 ... (2 spacje)
-# Wtedy liczba zawsze bedzie znajdowac sie po znakiem "|"
-# oczywiscie to wszystko przy zalozeniu ze linijka posiada 4 znaki '.' oraz dwa znaki '|' w kazdym segmencie przy innych zalozeniach trzeba dostosowac zmienna offset
 def exercise_3_5(length: int) -> str:
-    result = ""
-    unit = "|...."
-    for i in range(length):
-        result += unit
-    result += "|"
-    spaces = {}
-    offset = 4
-
-    for i in range(length + 1):
-        if len(str(i)) > len(str(i - 1)):
-            offset -= 1
-        spaces[i] = offset
-
+    dot_number = 4
+    ruler = "".join([f"|{'.'*dot_number}" for x in range(length)]) + "|"
     numbers = ""
-    for k, v in spaces.items():
-        numbers += f"{k}" + (" " * v)
-    result += "\n" + numbers
+    for i in range(length + 1):
+        spaces = 1 + dot_number - len(str(i + 1))
+        numbers += f"{i}" + " " * spaces
 
+    result = f"{ruler}\n{numbers}"
     return result
 
 
