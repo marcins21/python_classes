@@ -1,5 +1,6 @@
 from typing import List
 
+
 def make_ruler(n: int) -> str:
     dot_number = 4
     ruler = "".join([f"|{'.' * dot_number}" for x in range(n)]) + "|"
@@ -13,35 +14,29 @@ def make_ruler(n: int) -> str:
 
 
 def make_grid(cols: int, rows: int) -> str:
-    try:
-        line = "+----"
-        pipes = "|    "
+    line = "+----"
+    pipes = "|    "
 
-        horizontal_line = line * rows
-        horizontal_line += "+"
-        horizontal_pipes = pipes * rows
-        horizontal_pipes += "|"
+    horizontal_line = line * rows
+    horizontal_line += "+"
+    horizontal_pipes = pipes * rows
+    horizontal_pipes += "|"
 
-        result = horizontal_line + "\n"
-        units = 0
-        while units != cols:
-            result += horizontal_pipes + "\n"
-            result += horizontal_line + "\n"
-            units += 1
-        return result
-    except Exception as e:
-        raise ValueError(f"Error in make_grid: {str(e)}")
+    result = horizontal_line + "\n"
+    units = 0
+    while units != cols:
+        result += horizontal_pipes + "\n"
+        result += horizontal_line + "\n"
+        units += 1
+    return result
 
 
 def factorial(n: int) -> int:
-    try:
-        result = 1
-        while n != 1:
-            result *= n
-            n -= 1
-        return result
-    except Exception as e:
-        raise ValueError(f"Error in factorial: {str(e)}")
+    result = 1
+    while n != 1:
+        result *= n
+        n -= 1
+    return result
 
 
 def fibonacci(n: int) -> int:
@@ -51,37 +46,28 @@ def fibonacci(n: int) -> int:
     c = 1
     if n < 3:
         return c
-    try:
-        while n != 2:
-            c = a + b
-            a = b
-            b = c
-            result += c
-            n -= 1
-        return c
-    except Exception as e:
-        raise ValueError(f"Error in fibonacci: {str(e)}")
+    while n != 2:
+        c = a + b
+        a = b
+        b = c
+        result += c
+        n -= 1
+    return c
 
 
 def odwracanie_iter(L: List, left: int, right: int) -> List:
-    try:
-        while left < right:
-            L[left], L[right] = L[right], L[left]
-            right -= 1
-            left +=  1
-        return L
-    except Exception as e:
-        raise ValueError(f"Error in odwracanie_iter: {str(e)}")
+    while left < right:
+        L[left], L[right] = L[right], L[left]
+        right -= 1
+        left += 1
+    return L
 
 
 def odwracanie_rek(L: List, left: int, right: int) -> List:
-    try:
-        if left < right:
-            L[left], L[right] = L[right], L[left]
-            odwracanie_rek(L, left + 1, right - 1)
-        return L
-    except Exception as e:
-        raise ValueError(f"Error in odwracanie_rek: {str(e)}")
+    if left < right:
+        L[left], L[right] = L[right], L[left]
+        odwracanie_rek(L, left + 1, right - 1)
+    return L
 
 
 def sum_seq(sequence):
