@@ -1,33 +1,15 @@
 from typing import List
 
-
-# Jezeli dlugosc liczby na miarce sie zwieksza, trzeba zadbac o to by odleglosci pomiedzy kolejnymi liczbami byly mniejsze
-# PRZYKLAD -  0    1    2 ...  (4 spacje odstępu)   10   11   12 ...  (3 spacje)  100  101  102 ... (2 spacje)
-# Wtedy liczba zawsze bedzie znajdowac sie po znakiem "|"
-# oczywiscie to wszystko przy zalozeniu ze linijka posiada 4 znaki '.' oraz dwa znaki '|' w kazdym segmencie przy innych zalozeniach trzeba dostosowac zmienna offset
 def make_ruler(n: int) -> str:
-    try:
-        result = ""
-        unit = "|...."
-        for i in range(n):
-            result += unit
-        result += "|"
-        spaces = {}
-        off_set = 4
+    dot_number = 4
+    ruler = "".join([f"|{'.' * dot_number}" for x in range(n)]) + "|"
+    numbers = ""
+    for i in range(n + 1):
+        spaces = 1 + dot_number - len(str(i + 1))
+        numbers += f"{i}" + " " * spaces
 
-        for i in range(n + 1):
-            if len(str(i)) > len(str(i - 1)):
-                off_set -= 1
-            spaces[i] = off_set
-
-        numbers = ""
-        for k, v in spaces.items():
-            numbers += f"{k}" + (" " * v)
-        result += "\n" + numbers
-
-        return result
-    except Exception as e:
-        raise ValueError(f"Error in make_ruler: {str(e)}")
+    result = f"{ruler}\n{numbers}"
+    return result
 
 
 def make_grid(cols: int, rows: int) -> str:
@@ -81,11 +63,12 @@ def fibonacci(n: int) -> int:
         raise ValueError(f"Error in fibonacci: {str(e)}")
 
 
-# TODO:
 def odwracanie_iter(L: List, left: int, right: int) -> List:
     try:
-        for i in range(left, (right + 1) // 2):
-            L[i], L[right - i] = L[right - i], L[i]
+        while left < right:
+            L[left], L[right] = L[right], L[left]
+            right -= 1
+            left +=  1
         return L
     except Exception as e:
         raise ValueError(f"Error in odwracanie_iter: {str(e)}")
