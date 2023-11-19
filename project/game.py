@@ -53,6 +53,8 @@ def game(player_board: "Board", bot_board: "Board", info=""):
             os.system("cls||clear")
             player_board.randomize_ships_across_board()
             bot_board.randomize_ships_across_board()
+
+            #DEBUG INFO
             for ship in player_board.ships:
                 print(f"{ship.__class__.__name__} Coordinates: {ship.cords}")
 
