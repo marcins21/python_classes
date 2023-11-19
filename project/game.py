@@ -2,7 +2,7 @@ import os
 import settings
 from termcolor import colored
 
-from board import Board
+from board import Board, show_game_board
 
 
 def game_menu():
@@ -19,7 +19,7 @@ def game(player_board: "Board", bot_board: "Board", info=""):
 
     while True:
         game_menu()
-        player_board.show_game_board(bot_board)
+        show_game_board(player_board=player_board, bot_board=bot_board)
 
         try:
             user_options_menu_input = int(input(colored("Option: ", "light_blue")))
@@ -51,8 +51,10 @@ def game(player_board: "Board", bot_board: "Board", info=""):
         # Randomize ships placement on the board logic
         if user_options_menu_input == 2:
             os.system("cls||clear")
-            player_board.board[0][0] = "X"
-            pass
+            player_board.randomize_ships_across_board()
+            bot_board.randomize_ships_across_board()
+            for ship in player_board.ships:
+                print(f"{ship.__class__.__name__} Coordinates: {ship.cords}")
 
         # Exit
         if user_options_menu_input == 3:
