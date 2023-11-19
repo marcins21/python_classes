@@ -14,3 +14,4 @@ AMOUNT_OF_LARGE_SHIPS = 2
 
 # User
 USER_NAME = "PLAYER"  # Default name is user will not set anything
+BOT_NAME = "BOT"
