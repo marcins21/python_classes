@@ -1,7 +1,14 @@
-from settings import BOARD_HEIGH, BOARD_WIDTH, AMOUNT_OF_SMALL_SHIPS, AMOUNT_OF_MEDIUM_SHIPS, AMOUNT_OF_LARGE_SHIPS
+from settings import (
+    BOARD_HEIGH,
+    BOARD_WIDTH,
+    AMOUNT_OF_SMALL_SHIPS,
+    AMOUNT_OF_MEDIUM_SHIPS,
+    AMOUNT_OF_LARGE_SHIPS,
+)
 import ship
 import random
 from termcolor import colored
+
 
 class Board:
     def __init__(self, board_name: str):
@@ -24,12 +31,18 @@ class Board:
     def place_ship(self, ship: "ship.Ship"):
         for coord in ship.cords:
             row, col = coord
-            self.board[row][col] = colored("X","green")
+            self.board[row][col] = colored("X", "green")
 
     def is_valid_position(self, ship: "ship.Ship"):
         for coord in ship.cords:
             row, col = coord
-            if row < 0 or row >= self.heigh or col < 0 or col >= self.width or self.board[row][col] == "X":
+            if (
+                row < 0
+                or row >= self.heigh
+                or col < 0
+                or col >= self.width
+                or self.board[row][col] == "X"
+            ):
                 return False
         return True
 
@@ -54,7 +67,9 @@ class Board:
             orientation = random.choice(["horizontal", "vertical"])
             start_row = random.randint(0, self.heigh - 1)
             start_col = random.randint(0, self.width - 1)
-            ship.cords = self.calculate_ship_coordinates(start_row, start_col, ship.width, orientation)
+            ship.cords = self.calculate_ship_coordinates(
+                start_row, start_col, ship.width, orientation
+            )
 
             if self.is_valid_position(ship):
                 self.place_ship(ship)
@@ -70,7 +85,9 @@ class Board:
 
 def show_game_board(player_board: "Board", bot_board: "Board"):
     spaces_between_titles = (
-        2 * (player_board.width) - len(player_board.board_name) + player_board.spaces_between_other_board
+        2 * (player_board.width)
+        - len(player_board.board_name)
+        + player_board.spaces_between_other_board
     )
     board_title = (
         f"\n{player_board.board_name}"  # By Default - Player Board Title
