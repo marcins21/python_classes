@@ -21,7 +21,7 @@ class Board:
         )
         board_title = (
             f"\n{self.board_name}"  # By Default - Player Board Title
-            + (" " * (spaces_between_titles)) # Spaces between name of boards
+            + (" " * (spaces_between_titles))  # Spaces between name of boards
             + f"{other_board.board_name}"  # By Default - Bot Board Title
         )
 
@@ -33,6 +33,3 @@ class Board:
             for col2 in range(self.width):
                 print(other_board.board[row][col2], end=" ")
             print()
-
-
-
