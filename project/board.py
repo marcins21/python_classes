@@ -90,20 +90,16 @@ class Board:
 def show_game_board(
     player_board: "Board", bot_board: "Board", bot_title="", user_name=""
 ):
-    # interface
     BOARD_TITLE = (
         f"\n{user_name}"  # By Default - Player Board Title
         + (" " * (SPACE_BETWEEN_TITLES))  # Spaces between name of boards
         + f"{BOT_NAME}"  # By Default - Bot Board Title
     )
 
-    # Print board title
     print(BOARD_TITLE + bot_title)
 
-    # Calculate the width of each index
     index_width = len(str(max(player_board.width, bot_board.width - 5)))
 
-    # Print column indices for player board
     print(" " * len(BOARD_TITLE), end="")
     print("")
     print(end=" ")
@@ -111,14 +107,12 @@ def show_game_board(
         print(f" {col:>{index_width}}", end="")
     print(end=(" " * SPACES_BETWEEN_OTHER_BOARD))
 
-    # Print column indices for bot board
     print(end=(" " * 3))
     for col2 in range(bot_board.width):
         print(f" {col2:>{index_width}}", end="")
     print()
 
     for row in range(player_board.heigh):
-        # Print row index for player board
         print(f"{row:2} ", end="")
 
         # Print player board
@@ -126,13 +120,14 @@ def show_game_board(
             print(player_board.board[row][col], end="  ")
         print(end=(" " * SPACES_BETWEEN_OTHER_BOARD))
 
-        # Print row index for bot board
         print(f"{row:2} ", end="")
 
         # Print bot board
         for col2 in range(bot_board.width):
             print(bot_board.board[row][col2], end="  ")
         print()
+
+    # Previus Version, not including indecies
 
     # print(BOARD_TITLE + bot_title)
     # for row in range(player_board.heigh):

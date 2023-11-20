@@ -6,6 +6,8 @@ from termcolor import colored
 
 from board import Board, show_game_board
 
+# TODO: Mask BOT board, reveal ships only when cheat option is activated
+
 
 def game_menu():
     print(
@@ -83,13 +85,13 @@ def game(player_board: "Board", bot_board: "Board", info="", cst_name=""):
 
                 player_hit = False
                 player_win = False
-                player_destroy=False
+                player_destroy = False
                 for ship in bot_board.ships:
                     if ship.is_hit((x, y)):
                         player_hit = True
                         if ship.is_destroyed():
                             bot_board.ships.remove(ship)
-                            player_destroy=True
+                            player_destroy = True
 
                             # User win
                             if len(bot_board.ships) == 0:
@@ -121,13 +123,13 @@ def game(player_board: "Board", bot_board: "Board", info="", cst_name=""):
 
                 bot_hit = False
                 bot_win = False
-                bot_destroy=False
+                bot_destroy = False
                 for ship in player_board.ships:
                     if ship.is_hit((x, y)):
                         bot_hit = True
                         if ship.is_destroyed():
                             player_board.ships.remove(ship)
-                            bot_destroy=True
+                            bot_destroy = True
                             # Bot win
                             if len(player_board.ships) == 0:
                                 bot_win = True
