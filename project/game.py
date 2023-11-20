@@ -20,7 +20,7 @@ def validate_user_hit(x: str, y: str):
         print(colored("\nYou didn't provide integer coordinates try again", "red"))
         return None, None
 
-    if x < settings.BOARD_WIDTH and y < settings.BOARD_HEIGH:
+    if 0 <= x < settings.BOARD_WIDTH and 0 <= y < settings.BOARD_HEIGH:
         return x, y
 
     print(
@@ -68,13 +68,17 @@ def game(player_board: "Board", bot_board: "Board", info=""):
             os.system("cls||clear")
 
             x, y = validate_user_hit(user_hit_x, user_hit_y)
-            if x and y:
+            if (x and y) or x==0 or y == 0:
                 print(
                     colored(
                         f"\nCoords Get successfully {x}, {y}, {type(x)}, {type(y)}",
                         "green",
                     )
                 )
+
+                # TESTING PURPOSE NOT FINAL IMPLEMENTATION
+                bot_board.board[x][y] = colored("H","red")
+
             else:
                 continue
 
@@ -83,7 +87,6 @@ def game(player_board: "Board", bot_board: "Board", info=""):
             os.system("cls||clear")
             player_board.randomize_ships_across_board()
             bot_board.randomize_ships_across_board()
-
             # DEBUG INFO
             for ship in player_board.ships:
                 print(f"{ship.__class__.__name__} Coordinates: {ship.cords}")
