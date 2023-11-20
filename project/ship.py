@@ -8,7 +8,7 @@ class Ship:
         self._destroyed_parts = 0
         self.cords = cords
 
-    def if_hit(self, target: List[int]):
+    def is_hit(self, target: List[int]):
         if target in self.cords:
             self._destroyed_parts += 1
             return True

@@ -4,7 +4,12 @@ from settings import (
     AMOUNT_OF_SMALL_SHIPS,
     AMOUNT_OF_MEDIUM_SHIPS,
     AMOUNT_OF_LARGE_SHIPS,
+    SPACES_BETWEEN_OTHER_BOARD,
+    USER_NAME,
+    SPACE_BETWEEN_TITLES,
+    BOT_NAME,
 )
+
 import ship
 import random
 from termcolor import colored
@@ -16,7 +21,6 @@ class Board:
         self.heigh = BOARD_HEIGH
         self.board_name = board_name
         self.board = []
-        self.spaces_between_other_board = 10
         self.ships = []
 
     def generate_board(self):
@@ -83,23 +87,58 @@ class Board:
             return [(start_row + i, start_col) for i in range(ship_width)]
 
 
-def show_game_board(player_board: "Board", bot_board: "Board"):
-    spaces_between_titles = (
-        2 * (player_board.width)
-        - len(player_board.board_name)
-        + player_board.spaces_between_other_board
-    )
-    board_title = (
-        f"\n{player_board.board_name}"  # By Default - Player Board Title
-        + (" " * (spaces_between_titles))  # Spaces between name of boards
-        + f"{bot_board.board_name}"  # By Default - Bot Board Title
+def show_game_board(
+    player_board: "Board", bot_board: "Board", bot_title="", user_name=""
+):
+    # interface
+    BOARD_TITLE = (
+        f"\n{user_name}"  # By Default - Player Board Title
+        + (" " * (SPACE_BETWEEN_TITLES))  # Spaces between name of boards
+        + f"{BOT_NAME}"  # By Default - Bot Board Title
     )
 
-    print(board_title)
+    # Print board title
+    print(BOARD_TITLE + bot_title)
+
+    # Calculate the width of each index
+    index_width = len(str(max(player_board.width, bot_board.width - 5)))
+
+    # Print column indices for player board
+    print(" " * len(BOARD_TITLE), end="")
+    print("")
+    print(end=" ")
+    for col in range(player_board.width):
+        print(f" {col:>{index_width}}", end="")
+    print(end=(" " * SPACES_BETWEEN_OTHER_BOARD))
+
+    # Print column indices for bot board
+    print(end=(" " * 3))
+    for col2 in range(bot_board.width):
+        print(f" {col2:>{index_width}}", end="")
+    print()
+
     for row in range(player_board.heigh):
+        # Print row index for player board
+        print(f"{row:2} ", end="")
+
+        # Print player board
         for col in range(player_board.width):
-            print(player_board.board[row][col], end=" ")
-        print(end=(" " * player_board.spaces_between_other_board))
-        for col2 in range(player_board.width):
-            print(bot_board.board[row][col2], end=" ")
+            print(player_board.board[row][col], end="  ")
+        print(end=(" " * SPACES_BETWEEN_OTHER_BOARD))
+
+        # Print row index for bot board
+        print(f"{row:2} ", end="")
+
+        # Print bot board
+        for col2 in range(bot_board.width):
+            print(bot_board.board[row][col2], end="  ")
         print()
+
+    # print(BOARD_TITLE + bot_title)
+    # for row in range(player_board.heigh):
+    #     for col in range(player_board.width):
+    #         print(player_board.board[row][col], end=" ")
+    #     print(end=(" " * SPACES_BETWEEN_OTHER_BOARD))
+    #     for col2 in range(player_board.width):
+    #         print(bot_board.board[row][col2], end=" ")
+    #     print()
