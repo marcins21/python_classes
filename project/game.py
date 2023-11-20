@@ -20,7 +20,10 @@ def starting_menu_options():
     print("\n1) Set Username\n2) Start New Game\n3) Exit")
 
 
-def validate_user_hit(x: str, y: str):
+def validate_user_hit(x=None, y=None):
+    if not x or not y:
+        return None
+
     try:
         x, y = int(x), int(y)
     except ValueError:
@@ -75,10 +78,21 @@ def game(player_board: "Board", bot_board: "Board", info="", cst_name=""):
             continue
 
         if user_options_menu_input == 1:
-            user_hit_x, user_hit_y = input("Enter 'x' 'y': ").split()
-            os.system("cls||clear")
+            try:
+                user_hit_x, user_hit_y = input("Enter 'x' 'y': ").split()
+            except ValueError:
+                os.system("cls||clear")
+                print(
+                    colored(
+                        "\nYou didn't provide 2 values as expected\n",
+                        "red",
+                    )
+                )
+                continue
 
+            os.system("cls||clear")
             x, y = validate_user_hit(user_hit_x, user_hit_y)
+
             if (x and y) or x == 0 or y == 0:
                 # Player Shoot
                 bot_board.board[x][y] = colored("H", "red")
@@ -124,11 +138,11 @@ def game(player_board: "Board", bot_board: "Board", info="", cst_name=""):
                 bot_hit = False
                 bot_win = False
                 bot_destroy = False
-                for ship in player_board.ships:
-                    if ship.is_hit((x, y)):
+                for ship_bot in player_board.ships:
+                    if ship_bot.is_hit((bot_turn_x, bot_turn_y)):
                         bot_hit = True
-                        if ship.is_destroyed():
-                            player_board.ships.remove(ship)
+                        if ship_bot.is_destroyed():
+                            player_board.ships.remove(ship_bot)
                             bot_destroy = True
                             # Bot win
                             if len(player_board.ships) == 0:
@@ -163,6 +177,8 @@ def game(player_board: "Board", bot_board: "Board", info="", cst_name=""):
                     print(colored(f"{settings.BOT_NAME} WIN!", "red"))
                     break
 
+            else:
+                continue
         # Randomize ships placement on the board logic
         if user_options_menu_input == 2:
             os.system("cls||clear")
