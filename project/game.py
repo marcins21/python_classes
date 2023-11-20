@@ -15,15 +15,12 @@ def game_menu():
         "\n" + colored("4) Cheats", "dark_grey", attrs=["dark"]),
     )
 
-
 def starting_menu_options():
     print("\n1) Set Username\n2) Start New Game\n3) Exit")
-
 
 def validate_user_hit(x=None, y=None):
     if not x or not y:
         return None
-
     try:
         x, y = int(x), int(y)
     except ValueError:
@@ -77,6 +74,7 @@ def game(player_board: "Board", bot_board: "Board", info="", cst_name=""):
             )
             continue
 
+        # Hit option
         if user_options_menu_input == 1:
             try:
                 user_hit_x, user_hit_y = input("Enter 'x' 'y': ").split()
@@ -106,11 +104,10 @@ def game(player_board: "Board", bot_board: "Board", info="", cst_name=""):
                         if ship.is_destroyed():
                             bot_board.ships.remove(ship)
                             player_destroy = True
-
-                            # User win
                             if len(bot_board.ships) == 0:
                                 player_win = True
 
+                # Checking if user hit or win a game
                 if player_hit:
                     os.system("cls||clear")
                     print("PLAYER: ", colored("HIT", "green"))
@@ -148,6 +145,7 @@ def game(player_board: "Board", bot_board: "Board", info="", cst_name=""):
                             if len(player_board.ships) == 0:
                                 bot_win = True
 
+                #Checking if Bot hit or win the game
                 if bot_hit:
                     print(
                         "BOT: ",
@@ -179,6 +177,7 @@ def game(player_board: "Board", bot_board: "Board", info="", cst_name=""):
 
             else:
                 continue
+
         # Randomize ships placement on the board logic
         if user_options_menu_input == 2:
             os.system("cls||clear")
@@ -236,6 +235,7 @@ def starting_menu(error=""):
             )
             continue
 
+        # Set username option
         if user_options_menu_input == 1:
             user_name = input(colored("Set Username: ", "light_blue"))
             settings.USER_NAME = user_name
