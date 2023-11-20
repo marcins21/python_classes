@@ -13,6 +13,25 @@ def starting_menu_options():
     print("\n1) Set Username\n2) Start New Game\n3) Exit")
 
 
+def validate_user_hit(x: str, y: str):
+    try:
+        x, y = int(x), int(y)
+    except ValueError:
+        print(colored("\nYou didn't provide integer coordinates try again", "red"))
+        return None, None
+
+    if x < settings.BOARD_WIDTH and y < settings.BOARD_HEIGH:
+        return x, y
+
+    print(
+        colored(
+            f"\nYou didn't provide right coordinates try again coords between {settings.BOARD_WIDTH}-{settings.BOARD_HEIGH}",
+            "red",
+        )
+    )
+    return None, None
+
+
 def game(player_board: "Board", bot_board: "Board", info=""):
     os.system("cls||clear")
     print(info)
@@ -43,10 +62,21 @@ def game(player_board: "Board", bot_board: "Board", info=""):
             )
             continue
 
-        # Hit logic
+        # TODO: Hit logic
         if user_options_menu_input == 1:
+            user_hit_x, user_hit_y = input("Enter 'x' 'y': ").split()
             os.system("cls||clear")
-            pass
+
+            x, y = validate_user_hit(user_hit_x, user_hit_y)
+            if x and y:
+                print(
+                    colored(
+                        f"\nCoords Get successfully {x}, {y}, {type(x)}, {type(y)}",
+                        "green",
+                    )
+                )
+            else:
+                continue
 
         # Randomize ships placement on the board logic
         if user_options_menu_input == 2:
@@ -54,7 +84,7 @@ def game(player_board: "Board", bot_board: "Board", info=""):
             player_board.randomize_ships_across_board()
             bot_board.randomize_ships_across_board()
 
-            #DEBUG INFO
+            # DEBUG INFO
             for ship in player_board.ships:
                 print(f"{ship.__class__.__name__} Coordinates: {ship.cords}")
 

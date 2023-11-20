@@ -8,13 +8,13 @@ class Ship:
         self._destroyed_parts = 0
         self.cords = cords
 
-    def check_if_hit(self, target: List[int]):
+    def if_hit(self, target: List[int]):
         if target in self.cords:
             self._destroyed_parts += 1
             return True
         return False
 
-    def check_if_destroyed(self):
+    def is_destroyed(self):
         if self._destroyed_parts == self.width:
             return True
         return False
