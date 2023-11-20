@@ -8,4 +8,11 @@
 ![Przechwytywanie](https://github.com/marcins21/python_classes/assets/62626012/88a55c97-db26-4e83-987c-4267f70102d0)
 
 ---
-![game](https://github.com/marcins21/python_classes/assets/62626012/ea9f6563-935d-4070-85bc-5cb83c5bd653)
+Game
+![image](https://github.com/marcins21/python_classes/assets/62626012/eaeb2c74-c696-41ce-9110-376592b1fdcb)
+
+---
+Randomized ship placement && Cheat Option Acitvated
+![image](https://github.com/marcins21/python_classes/assets/62626012/3b32e2df-0b8a-40af-bc4f-2f5b62b86686)
+
+
