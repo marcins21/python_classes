@@ -18,16 +18,16 @@ class Point:
     def __ne__(self, other: "Point") -> bool:
         return (other.x != self.x) or (other.y != self.y)
 
-    def __add__(self, other: "Point"):
+    def __add__(self, other: "Point") -> "Point":
         return Point((self.x + other.x), (self.y + other.y))
 
-    def __sub__(self, other: "Point"):
+    def __sub__(self, other: "Point") -> "Point":
         return Point((self.x - other.x), (self.y - other.y))
 
-    def __mul__(self, other: "Point"):
+    def __mul__(self, other: "Point") -> float:
         return (self.x * other.x) + (self.y * other.y)
 
-    def length(self):
+    def length(self) -> float:
         return math.sqrt(pow(self.x, 2) + pow(self.y, 2))
 
     def __cross__(self, other: "Point") -> int:
