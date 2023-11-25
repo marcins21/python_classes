@@ -1,12 +1,15 @@
 import unittest
+
 from points import Point
 from rectangles import Rectangle
 
 from math import sqrt
 
+# Obi klasy "Rectangle" oraz "Point" testuje w jedej klasie testujacej ("TestRectangleAndPoint") ponizej
+
 
 class TestRectangleAndPoint(unittest.TestCase):
-    #Point
+    # Point
     def setUp(self) -> None:
         self.point_a = Point(1, 1)
         self.point_b = Point(3, 3)
@@ -54,7 +57,7 @@ class TestRectangleAndPoint(unittest.TestCase):
     def test_hash(self):
         self.assertEquals(self.point_a.__hash__(), 8389048192121911274)
 
-    #Rectangle
+    # Rectangle
     def test_init(self):
         rect = Rectangle(1, 2, 3, 4)
         self.assertEqual(rect.point_1, Point(1, 2))
@@ -92,6 +95,7 @@ class TestRectangleAndPoint(unittest.TestCase):
         self.assertEqual(rect_moved.point_1, Point(2, 3))
         self.assertEqual(rect_moved.point_2, Point(4, 5))
         self.assertEqual(rect_moved, Rectangle(2, 3, 4, 5))
+
 
 if __name__ == "__main__":
     unittest.main()

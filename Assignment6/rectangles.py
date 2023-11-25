@@ -1,5 +1,6 @@
 from points import Point
 
+
 class Rectangle:
     def __init__(self, x1, y1, x2, y2):
         self.point_1 = Point(x1, y1)
@@ -42,4 +43,4 @@ class Rectangle:
         moving = Point(x, y)
         point_1 = self.point_1 + moving
         point_2 = self.point_2 + moving
-        return Rectangle(point_1.x, point_1.y,  point_2.x, point_2.y)
+        return Rectangle(point_1.x, point_1.y, point_2.x, point_2.y)
