@@ -66,27 +66,15 @@ class Rectangle:
         new_y_2 = max(self.point_2.y, other.point_2.y)
         return Rectangle(new_x_1, new_y_1, new_x_2, new_y_2)
 
-
     def make4(self):
         center = self.center()
         x_ab = Point(center.x, self.point_1.y)
         x_dc = Point(center.x, self.point_2.y)
         y_da = Point(self.point_1.x, center.y)
         y_cb = Point(self.point_2.x, center.y)
-        return (Rectangle(self.point_1.x,self.point_1.y,center.x, center.y),
-                Rectangle(y_da.x, y_da.y, x_dc.x, x_dc.y),
-                Rectangle(center.x, center.y, self.point_2.x, self.point_2.y),
-                Rectangle(x_ab.x, x_ab.y, y_cb.x, y_cb.y))
-
-
-
-
-
-
-rec1 = Rectangle(1, 0, 3, 3)
-print(rec1.make4())
-
-# rec2 = Rectangle(1, 3, 2, 3)
-# print(rec1 == rec2)
-# print(rec1.center())
-# print(rec1.area())
+        return (
+            Rectangle(self.point_1.x, self.point_1.y, center.x, center.y),
+            Rectangle(y_da.x, y_da.y, x_dc.x, x_dc.y),
+            Rectangle(center.x, center.y, self.point_2.x, self.point_2.y),
+            Rectangle(x_ab.x, x_ab.y, y_cb.x, y_cb.y),
+        )

@@ -29,8 +29,10 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(Rectangle(11, 13, 56, 45).area(), 1440)
 
     def test_move(self):
-        self.assertEqual(Rectangle(3, 2, 16, 73).move(6, 7), "[(9, 9), (22, 80)]")
-        self.assertEqual(Rectangle(-4, -1, 892, 100).move(4, 9), "[(0, 8), (896, 109)]")
+        self.assertEqual(Rectangle(3, 2, 16, 73).move(6, 7), Rectangle(9, 9, 22, 80))
+        self.assertEqual(
+            Rectangle(-4, -1, 892, 100).move(4, 9), Rectangle(0, 8, 896, 109)
+        )
 
     def test_intersection(self):
         self.assertEqual(
@@ -44,6 +46,17 @@ class TestRectangle(unittest.TestCase):
         )
         self.assertEqual(
             Rectangle(2, 2, 4, 4).cover(Rectangle(4, 4, 6, 6)), Rectangle(2, 2, 6, 6)
+        )
+
+    def test__make4__(self):
+        self.assertEqual(
+            Rectangle(0, 0, 2, 2).make4(),
+            (
+                Rectangle(0, 0, 1, 1),
+                Rectangle(0, 1, 1, 2),
+                Rectangle(1, 1, 2, 2),
+                Rectangle(1, 0, 2, 1),
+            ),
         )
 
 
