@@ -129,10 +129,3 @@ class Rectangle:
             Rectangle(center.x, center.y, self.point_2.x, self.point_2.y),
             Rectangle(x_ab.x, x_ab.y, y_cb.x, y_cb.y),
         )
-
-
-# rec1 = Rectangle(1, 0, 3, 3)
-# rec2 = Rectangle(1, 3, 2, 3)
-# print(rec1 == rec2)
-# print(rec1.center())
-# print(rec1.area())
