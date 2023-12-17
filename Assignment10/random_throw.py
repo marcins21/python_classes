@@ -1,7 +1,6 @@
 import tkinter as tk
 import random
 
-
 class Gui:
     def __init__(
         self,
@@ -37,14 +36,21 @@ class Gui:
 
     def result(self):
         throw = random.randrange(1, 7)
-        self.label.configure(text=f"Wynik Rzutu: {throw}")
+        dice_faces = [
+            "\u2680",  # Dice face 1
+            "\u2681",  # Dice face 2
+            "\u2682",  # Dice face 3
+            "\u2683",  # Dice face 4
+            "\u2684",  # Dice face 5
+            "\u2685",  # Dice face 6
+        ]
+        self.label.configure(text=f"Wynik Rzutu: {dice_faces[throw-1]}")
         self.label.pack()
-
-
 
 # pink #e172b2
 # blue #6972b2
-#config
+
+# Config
 game = Gui(
     window_width=1350,
     window_height=500,
@@ -54,3 +60,5 @@ game = Gui(
     title="Rzut",
 )
 game.create_window()
+
+
