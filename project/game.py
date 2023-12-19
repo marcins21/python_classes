@@ -6,8 +6,6 @@ from termcolor import colored
 
 from board import Board, show_game_board_with
 
-# TODO: Mask BOT board, reveal ships only when cheat option is activated
-
 
 def game_menu():
     print(
@@ -45,6 +43,7 @@ def game(player_board: "Board", bot_board: "Board", info="", cst_name=""):
     os.system("cls||clear")
     print(info)
     cheats_activated = False
+    are_ships_randomized = False
     while True:
         game_menu()
 
@@ -184,14 +183,18 @@ def game(player_board: "Board", bot_board: "Board", info="", cst_name=""):
         # Randomize ships placement on the board logic
         if user_options_menu_input == 2:
             os.system("cls||clear")
-            player_board.randomize_ships_across_board()
-            bot_board.randomize_ships_across_board()
-            settings.BOT_THINK = colored(
-                " Bot thinking about his next move".title(),
-                "red",
-                "on_black",
-                ["bold", "blink"],
-            )
+            if are_ships_randomized:
+                print(colored("\nSHIPS ARE ALREADY RANDOMIZED\n", "red"))
+            elif not are_ships_randomized:
+                player_board.randomize_ships_across_board()
+                bot_board.randomize_ships_across_board()
+                settings.BOT_THINK = colored(
+                    " Bot thinking about his next move".title(),
+                    "red",
+                    "on_black",
+                    ["bold", "blink"],
+                )
+                are_ships_randomized = True
 
         # Cheating option :)
         if user_options_menu_input == 4:
