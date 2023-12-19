@@ -4,7 +4,7 @@ import time
 import settings
 from termcolor import colored
 
-from board import Board, show_game_board
+from board import Board, show_game_board_with
 
 # TODO: Mask BOT board, reveal ships only when cheat option is activated
 
@@ -15,8 +15,10 @@ def game_menu():
         "\n" + colored("4) Cheats", "dark_grey", attrs=["dark"]),
     )
 
+
 def starting_menu_options():
     print("\n1) Set Username\n2) Start New Game\n3) Exit")
+
 
 def validate_user_hit(x=None, y=None):
     if not x or not y:
@@ -42,16 +44,17 @@ def validate_user_hit(x=None, y=None):
 def game(player_board: "Board", bot_board: "Board", info="", cst_name=""):
     os.system("cls||clear")
     print(info)
-
+    cheats_activated = False
     while True:
         game_menu()
-        show_game_board(
+
+        show_game_board_with(
             player_board=player_board,
             bot_board=bot_board,
             bot_title=settings.BOT_THINK,
+            show_with_cheats=cheats_activated,
             user_name=cst_name,
         )
-
         try:
             user_options_menu_input = int(input(colored("Option: ", "light_blue")))
         except ValueError:
@@ -145,7 +148,7 @@ def game(player_board: "Board", bot_board: "Board", info="", cst_name=""):
                             if len(player_board.ships) == 0:
                                 bot_win = True
 
-                #Checking if Bot hit or win the game
+                # Checking if Bot hit or win the game
                 if bot_hit:
                     print(
                         "BOT: ",
@@ -192,6 +195,7 @@ def game(player_board: "Board", bot_board: "Board", info="", cst_name=""):
 
         # Cheating option :)
         if user_options_menu_input == 4:
+            cheats_activated = True
             os.system("cls||clear")
             print(colored("\nCHEATS ACTIVATED\nBOT SHIPS POSITIONS", "green"))
             for ship in bot_board.ships:

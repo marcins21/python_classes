@@ -5,7 +5,6 @@ from settings import (
     AMOUNT_OF_MEDIUM_SHIPS,
     AMOUNT_OF_LARGE_SHIPS,
     SPACES_BETWEEN_OTHER_BOARD,
-    USER_NAME,
     SPACE_BETWEEN_TITLES,
     BOT_NAME,
 )
@@ -87,53 +86,83 @@ class Board:
             return [(start_row + i, start_col) for i in range(ship_width)]
 
 
-def show_game_board(
-    player_board: "Board", bot_board: "Board", bot_title="", user_name=""
+def show_game_board_with(
+    player_board: "Board",
+    bot_board: "Board",
+    bot_title="",
+    user_name="",
+    show_with_cheats=False,
 ):
-    BOARD_TITLE = (
-        f"\n{user_name}"  # By Default - Player Board Title
-        + (" " * (SPACE_BETWEEN_TITLES))  # Spaces between name of boards
-        + f"{BOT_NAME}"  # By Default - Bot Board Title
-    )
+    # CHEATS ACTIVATED - show bot baord aswell
+    if show_with_cheats:
+        BOARD_TITLE = (
+            f"\n{user_name}"  # By Default - Player Board Title
+            + (" " * (SPACE_BETWEEN_TITLES))  # Spaces between name of boards
+            + f"{BOT_NAME}"  # By Default - Bot Board Title
+        )
 
-    print(BOARD_TITLE + bot_title)
+        print(BOARD_TITLE + bot_title)
 
-    index_width = len(str(max(player_board.width, bot_board.width - 5)))
+        index_width = len(str(max(player_board.width, bot_board.width - 5)))
 
-    print(" " * len(BOARD_TITLE), end="")
-    print("")
-    print(end=" ")
-    for col in range(player_board.width):
-        print(f" {col:>{index_width}}", end="")
-    print(end=(" " * SPACES_BETWEEN_OTHER_BOARD))
-
-    print(end=(" " * 3))
-    for col2 in range(bot_board.width):
-        print(f" {col2:>{index_width}}", end="")
-    print()
-
-    for row in range(player_board.heigh):
-        print(f"{row:2} ", end="")
-
-        # Print player board
+        print(" " * len(BOARD_TITLE), end="")
+        print("")
+        print(end=" ")
         for col in range(player_board.width):
-            print(player_board.board[row][col], end="  ")
+            print(f" {col:>{index_width}}", end="")
         print(end=(" " * SPACES_BETWEEN_OTHER_BOARD))
 
-        print(f"{row:2} ", end="")
-
-        # Print bot board
+        print(end=(" " * 3))
         for col2 in range(bot_board.width):
-            print(bot_board.board[row][col2], end="  ")
+            print(f" {col2:>{index_width}}", end="")
         print()
 
-    # Previus Version, not including indecies
+        for row in range(player_board.heigh):
+            print(f"{row:2} ", end="")
 
-    # print(BOARD_TITLE + bot_title)
-    # for row in range(player_board.heigh):
-    #     for col in range(player_board.width):
-    #         print(player_board.board[row][col], end=" ")
-    #     print(end=(" " * SPACES_BETWEEN_OTHER_BOARD))
-    #     for col2 in range(player_board.width):
-    #         print(bot_board.board[row][col2], end=" ")
-    #     print()
+            # Print player board
+            for col in range(player_board.width):
+                print(player_board.board[row][col], end="  ")
+            print(end=(" " * SPACES_BETWEEN_OTHER_BOARD))
+
+            print(f"{row:2} ", end="")
+
+            # Print bot board
+            for col2 in range(bot_board.width):
+                print(bot_board.board[row][col2], end="  ")
+            print()
+
+    # show only player board
+    elif not show_with_cheats:
+        BOARD_TITLE = f"\n{user_name}" + (" " * (SPACE_BETWEEN_TITLES)) + f"{BOT_NAME}"
+
+        print(BOARD_TITLE + bot_title)
+
+        index_width = len(str(max(player_board.width, bot_board.width - 5)))
+
+        print(" " * len(BOARD_TITLE), end="")
+        print("")
+        print(end=" ")
+        for col in range(player_board.width):
+            print(f" {col:>{index_width}}", end="")
+        print(end=(" " * SPACES_BETWEEN_OTHER_BOARD))
+
+        print(end=(" " * 3))
+        for col2 in range(bot_board.width):
+            print(f" {col2:>{index_width}}", end="")
+        print()
+
+        for row in range(player_board.heigh):
+            print(f"{row:2}", end=" ")
+            for col in range(player_board.width):
+                print(f"{player_board.board[row][col]}  ", end="")
+
+            print(" " * SPACES_BETWEEN_OTHER_BOARD, end="")
+            print(f"{row:2} ", end="")
+
+            for col2 in range(bot_board.width):
+                if bot_board.board[row][col2] == colored("H", "red"):
+                    print("H", end="")
+                else:
+                    print("   ", end="")
+            print()

@@ -13,7 +13,7 @@ AMOUNT_OF_LARGE_SHIPS = 1  # 2
 
 
 # User
-USER_NAME = "PLAYER"  # Default name is user will not set anything
+USER_NAME = "PLAYER"
 BOT_NAME = "BOT"
 
 SPACES_BETWEEN_OTHER_BOARD = 8
