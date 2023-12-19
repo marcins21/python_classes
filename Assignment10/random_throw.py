@@ -57,7 +57,7 @@ game = Gui(
     result_window_width=15,
     result_window_height=5,
     background_color="#6972b2",
-    title="Rzut",
+    title="Rzut Kostką",
 )
 game.create_window()
 
