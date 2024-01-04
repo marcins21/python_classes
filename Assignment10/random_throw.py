@@ -1,6 +1,7 @@
 import tkinter as tk
 import random
 
+
 class Gui:
     def __init__(
         self,
@@ -47,6 +48,7 @@ class Gui:
         self.label.configure(text=f"Wynik Rzutu: {dice_faces[throw-1]}")
         self.label.pack()
 
+
 # pink #e172b2
 # blue #6972b2
 
@@ -60,5 +62,3 @@ game = Gui(
     title="Rzut Kostką",
 )
 game.create_window()
-
-

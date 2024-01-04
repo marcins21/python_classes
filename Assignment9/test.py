@@ -2,6 +2,7 @@ from node import Node
 from singlelist import SingleList
 import unittest
 
+
 class TestSingleList(unittest.TestCase):
     def test_remove_tail(self):
         my_list = SingleList()
@@ -31,5 +32,5 @@ class TestSingleList(unittest.TestCase):
         self.assertEqual(my_list1.length, 6)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

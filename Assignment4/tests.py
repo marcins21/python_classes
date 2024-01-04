@@ -26,8 +26,14 @@ class TestExercises(unittest.TestCase):
         print(make_grid(3, 2))
 
     def test_odwracanie_iter(self):
-        self.assertEqual(odwracanie_iter([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 0, 4),[5, 4, 3, 2, 1, 6, 7, 8, 9, 10])
-        self.assertEqual(odwracanie_iter([1, 2, 3, 4, 5, 6, 6, 5, 3, 2], 1,3), [1, 4, 3, 2, 5, 6, 6, 5, 3, 2])
+        self.assertEqual(
+            odwracanie_iter([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 0, 4),
+            [5, 4, 3, 2, 1, 6, 7, 8, 9, 10],
+        )
+        self.assertEqual(
+            odwracanie_iter([1, 2, 3, 4, 5, 6, 6, 5, 3, 2], 1, 3),
+            [1, 4, 3, 2, 5, 6, 6, 5, 3, 2],
+        )
 
     def test_odwracanie_rek(self):
         self.assertEqual(
