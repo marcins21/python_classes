@@ -29,11 +29,10 @@ class SingleList:
             self.head = self.tail = node
         self.length += 1
 
-    # ZADANIE
+    # ZADANIE 11.1 ----------------------------
     def remove_tail(self):
         if self.is_empty():
             raise ValueError("Empty List")
-
         removed_node = self.tail
 
         if self.head == self.tail:
@@ -55,7 +54,6 @@ class SingleList:
     def join(self, other: "SingleList"):
         if other.is_empty():
             return
-
         if self.is_empty():
             self.head = other.head
             self.tail = other.tail
