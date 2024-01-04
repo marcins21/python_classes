@@ -31,6 +31,15 @@ class TestSingleList(unittest.TestCase):
         self.assertEqual(my_list1.tail.data, 7)
         self.assertEqual(my_list1.length, 6)
 
+    def test_clear(self):
+        self.test_list = SingleList()
+        self.test_list.insert_head(Node(3))
+        self.test_list.insert_head(Node(9))
+        self.test_list.insert_head(Node(6))
+        self.test_list.clear()
+        self.assertIsNone(self.test_list.head)
+        self.assertIsNone(self.test_list.tail)
+        self.assertEqual(self.test_list.length, 0)
 
 if __name__ == "__main__":
     unittest.main()
