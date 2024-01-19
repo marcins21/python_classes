@@ -12,24 +12,24 @@ PL
 ## It is recommended to increase the size of the terminal when launching the application (recommended size: FULL-SCREEN).
 
 ---
-Glówne Menu / Main Menu
+## Glówne Menu / Main Menu
 
 ![image](https://github.com/marcins21/python_classes/assets/62626012/c2690147-eb78-439d-a1bb-c257a41649a1)
 
 ---
-Gra / Game
+## Gra / Game
 
 ![image](https://github.com/marcins21/python_classes/assets/62626012/c89aadae-c473-42ac-961e-dcee4d9ba610)
 
 
 ---
-Pozycje Statków są generowane losowo poprzez algorytm / Randomized ship placement 
+## Pozycje Statków są generowane losowo poprzez algorytm / Randomized ship placement 
 
 ![image](https://github.com/marcins21/python_classes/assets/62626012/f227dbbf-69c6-4ae5-a31c-9dbaa35b2a2f)
 
 
 ---
-Opcja Oszukiwania / Cheat Option 
+## Opcja Oszukiwania / Cheat Option 
 
 ![image](https://github.com/marcins21/python_classes/assets/62626012/85ffc495-e0b6-4f3a-b29f-f915dfc485f3)
 
