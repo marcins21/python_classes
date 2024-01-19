@@ -10,7 +10,7 @@ from board import Board, show_game_board_with
 def game_menu():
     print(
         "\n1) Hit Cell\n2) Randomize Ships \n3) Exit",
-        "\n" + colored("4) Cheats", "dark_grey", attrs=["dark"]),
+        "\n" + colored("4) Cheats", "white"),
     )
 
 
