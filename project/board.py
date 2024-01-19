@@ -162,7 +162,7 @@ def show_game_board_with(
 
             for col2 in range(bot_board.width):
                 if bot_board.board[row][col2] == colored("H", "red"):
-                    print("H", end="")
+                    print("H  ", end="")
                 else:
                     print("   ", end="")
             print()
